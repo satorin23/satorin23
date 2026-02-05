@@ -42,15 +42,43 @@
     z-index: 1;
     backdrop-filter: blur(10px);
     border-radius: 20px;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
 }
 
-.welcome {
+.contents {
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
     font-weight: 70;
 }
 
 p {
     font-weight: 10;
 }
+
+.hello {
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    border: white 10px;
+    background-color: rgb(191, 150, 230);
+    color: white;
+}
+
+.hello:hover {
+    background-color: rgb(133, 104, 160);
+
+}
+
+
+
+
 
 .hearts {
     font-size: 23px;

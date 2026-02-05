@@ -6,26 +6,38 @@
     </head>
     <body>
         <div class="container">
-            <div class="smolbox">
-                <h1 class="welcome"> Hello, Bebe </h1>
-                <p> Hii </p>
+            <div class="smolbox" id="card">
+                <div class="contents" id="contents">
+                    <h1 class="welcome"> HI!!! </h1>
+                    <button class="hello" id="btn1"> Hii </button>
+                </div>
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         <script>
+
+            const btn1 = document.getElementById("btn1");
+            const card = document.getElementById("contents");
+
+            btn1.addEventListener("click", () => {
+            card.style.opacity = 0; // fade out
+
+            setTimeout(() => {
+                contents.innerHTML = `
+                    <h1>Happy Valentine’s 💜</h1>
+                    <p>You make my days brighter ✨</p>
+             `;
+            contents.style.opacity = 1; // fade back in
+         }, 300); // matches CSS timing
+        });
+
+
+
+
+
+
+
+//hearts!!!
     function hearts() {
         const container = document.querySelector('.container');
 
