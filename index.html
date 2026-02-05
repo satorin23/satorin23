@@ -3,6 +3,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Happy Valentines Luv&lt;3 </title>
         <link rel="stylesheet" href="res/style.css">
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
     </head>
     <body>
         <div class="container">
@@ -19,6 +21,65 @@
             const btn1 = document.getElementById("btn1");
             const card = document.getElementById("contents");
 
+            let currentPage = 0;
+
+            const pages = [
+                {
+                    html: `
+                        <h1 class="welcome">HI!!!</h1>
+                        <button class="hello" id="btn1">Hii</button>
+                    `,
+                },
+                {
+                    html: `
+                        <h1> Are you ready? </h1>
+                        <p> Let's go back through our best moments together! </p>
+                        <button class="hello" id="btn1">Lets Go!!</button>
+                    `,
+                },
+                {
+                    html: `
+                        <h1>I have a question... 🥺</h1>
+                        <button class="hello" id="btn1">What?</button>
+                    `,
+                },
+                {
+                    html: `
+                        <h1>Will you be my Valentine? 💜</h1>
+                        <button class="hello" id="btn1">Yes!</button>
+                    `,
+                },
+                {
+                    html: `
+                        <h1>YAY!!! 🎉💜✨</h1>
+                        <p>You made me the happiest! 💕</p>
+                    `,
+                }
+            ];
+
+            function nextPage() {
+            card.style.opacity = 0;
+    
+            setTimeout(() => {
+                currentPage++;
+                if (currentPage < pages.length) {
+                    card.innerHTML = pages[currentPage].html;
+
+                    // Re-attach event listener to new button
+                    const newBtn = document.getElementById("btn1");
+                    if (newBtn) {
+                        newBtn.addEventListener("click", nextPage);
+                    }
+                }
+                card.style.opacity = 1;
+            }, 300);
+        }
+
+// Initial button listener
+btn1.addEventListener("click", nextPage);
+
+
+/*
             btn1.addEventListener("click", () => {
             card.style.opacity = 0; // fade out
 
@@ -30,7 +91,7 @@
             contents.style.opacity = 1; // fade back in
          }, 300); // matches CSS timing
         });
-
+*/
 
 
 
@@ -49,6 +110,7 @@
         creat.style.animationDuration = Math.random() * 3 + 2 + 's';
         creat.addEventListener('animationend', () => {
         creat.remove();
+        console.log("Deleted");
         });
     }
 
@@ -57,5 +119,7 @@
     hearts();
 
     setInterval(hearts, 200);
+
+    
         </script>        
     </body>
