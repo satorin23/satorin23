@@ -17,6 +17,27 @@
         </div>
 
         <script>
+        // Preload images
+        function preloadImages(imageUrls) {
+            imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    }
+
+        // List all your image URLs here
+        const imagesToPreload = [
+            'res/first.jpg',
+            'res/second.png',
+            'res/third.jpg',
+        // add all your image paths here
+    ];
+
+        // Call it when page loads
+        preloadImages(imagesToPreload);
+            
+            
+            
             const smolbox = document.querySelector(".smolbox");
             const btn1 = document.getElementById("btn1");
             const card = document.getElementById("contents");
@@ -49,15 +70,22 @@
                 },
                 {
                     html: `
-                        <h1></h1>
-                        <button class="hello" id="btn1"></button>
+                        <h1>October 12, 2025</h1>
+                        <img src="res/photos/second.png" width="385" height="343">
+                        <p> This is where i first introduced you to my parents. Did you know? I was also nervous as i didn't know how my family would react to me bringing a girl at home. \n\n\n But it was all so worth it!! \n </p>
+                        <button class="hello" id="btn1">Next</button>
                     `,
+                    height: "520px"
                 },
                 {
                     html: `
-                        <h1></h1>
-                        <p></p>
+                        <h1>October 21, 2025</h1>
+                        <p> My fav photo btw </p>
+                        <img src="res/photos/third.jpg" width="326" height="244">
+                        <p>The first time we went out together properly and also the first time i met your friends. I still fully remember this day up until now, i cannot forget when you cried because of me :((.\n</p>
+                        <button class="hello" id="btn1">Next</button>
                     `,
+                    height: "450px"
                 }
             ];
 
@@ -73,6 +101,14 @@
                 
                 if (currentPage === 2) {
                     smolbox.style.height = pages[2].height;
+                }
+                
+                if (currentPage === 3) {
+                    smolbox.style.height = pages[3].height;
+                }
+                
+                if (currentPage === 4) {
+                    smolbox.style.height = pages[4].height;
                 }
                 
                 // Re-attach event listener to new button
