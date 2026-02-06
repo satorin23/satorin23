@@ -82,6 +82,7 @@
                         <h1 class="welcome">HI!!!</h1>
                         <button class="hello" id="btn1"> Helloo! </button>
                     `,
+                    height: "200px"
                 },
                 {//1
                     html: `
@@ -148,6 +149,9 @@
                 if (currentPage < pages.length) {
                     card.innerHTML = pages[currentPage].html;
                     
+                if (currentPage === 0) {
+                    smolbox.style.height = pages[0].height;
+                }
                 
                 if (currentPage === 3) {
                     smolbox.style.height = pages[3].height;
