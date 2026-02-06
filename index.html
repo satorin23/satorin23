@@ -15,12 +15,16 @@
                 </div>
             </div>
         </div>
-
+        
         <script>
+            const smolbox = document.querySelector(".smolbox");
+            const btn1 = document.getElementById("btn1");
+            const card = document.getElementById("contents");
+        
         // Preload images
         function preloadImages(imageUrls) {
             imageUrls.forEach(url => {
-            const img = new Image();
+                const img = new Image();
             img.src = url;
         });
     }
@@ -69,9 +73,6 @@
             
             
             
-            const smolbox = document.querySelector(".smolbox");
-            const btn1 = document.getElementById("btn1");
-            const card = document.getElementById("contents");
 
             let currentPage = 0;
 
