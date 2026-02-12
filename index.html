@@ -12,6 +12,8 @@
                 <div class="contents" id="contents">
                     <h1 class="welcome"> HI!!! </h1>
                     <button class="hello" id="btn1"> Helloo! </button>
+                    <p><br>🎵 Bawat Daan - Ebe Dancel</p>
+                    <button class="hello" onclick="playsong()">Play▶️</button>
                 </div>
             </div>
         </div>
@@ -87,8 +89,10 @@
                     html: `
                         <h1 class="welcome">HI!!!</h1>
                         <button class="hello" id="btn1"> Helloo! </button>
+                        <iframe width="323" height="150" src="https://www.youtube.com/embed/XLNPf2wWW40?si=wrG4OEdXoGBru5_b?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <p>Play this song hehe</p>
                     `,
-                    height: "200px"
+                    height: "400px"
                 },
                 {//1
                     html: `
@@ -96,6 +100,7 @@
                         <p> I just wanna have a quick recap of everything hehe. </p>
                         <button class="hello" id="btn1">Okay, Sure!</button>
                     `,
+                    height: "200px",
                     width: "80px"
                 },
                 {//2
@@ -158,6 +163,10 @@
                     
                 if (currentPage === 0) {
                     smolbox.style.height = pages[0].height;
+                }
+
+                if (currentPage === 1) {
+                    smolbox.style.height = pages[1].height;
                 }
                 
                 if (currentPage === 3) {
