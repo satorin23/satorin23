@@ -12,8 +12,6 @@
                 <div class="contents" id="contents">
                     <h1 class="welcome"> HI!!! </h1>
                     <button class="hello" id="btn1"> Helloo! </button>
-                    <p><br>🎵 Bawat Daan - Ebe Dancel</p>
-                    <button class="hello" onclick="playsong()">Play▶️</button>
                 </div>
             </div>
         </div>
@@ -89,21 +87,61 @@
                     html: `
                         <h1 class="welcome">HI!!!</h1>
                         <button class="hello" id="btn1"> Helloo! </button>
-                        <iframe width="323" height="150" src="https://www.youtube.com/embed/XLNPf2wWW40?si=wrG4OEdXoGBru5_b?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <p>Play this song hehe</p>
                     `,
-                    height: "400px"
                 },
                 {//1
                     html: `
                         <h1 class="welcome" style="text-align: center;">Before Everything Else</h1>
-                        <p> I just wanna have a quick recap of everything hehe. </p>
+                        <p> i wanna say something. </p>
                         <button class="hello" id="btn1">Okay, Sure!</button>
                     `,
                     height: "200px",
                     width: "80px"
                 },
                 {//2
+                    html: `
+                        <p> 
+                            This day would be my best day since i planned this all in a span of a month. I do hope you'll like it!!
+                        </p>
+                        <button class="hello" id="btn1">Next</button>
+                    `
+                },
+                {//3
+                    html: `
+                        <p> 
+                            These past 4 months, you've made me feel so loved and i'm really happy that im with you right now. Its only fair for me to pay the price back🥰
+                        </p>
+                        <button class="hello" id="btn1">Next</button>
+                    `
+                },
+                {//4
+                    html: `
+                        <p> 
+                            I can't really think of a very long letter to write for you, i'm just really excited for what's about to happen today. <br><br> I want to make this day special just for you.
+                        </p>
+                        <button class="hello" id="btn1">Next</button>
+                    `
+                },
+                {//5
+                    html: `
+                        <p> 
+                            So..
+                        </p>
+                    `
+                },
+                {//6
+                    html: `
+                        <p> 
+                            Will you be my <b>Valentine</b>?
+                            
+                            <div id="valentine-buttons" style="opacity: 0; transition: opacity 1s ease;">
+                                <button class="hello" id="yesBtn">Yes! 💜</button>
+                                <button class="hello" id="noBtn">No</button>
+                            </div>
+                        </p>
+                    `
+                },
+/*                {//2
                     html: `
                     <h1> Are you ready? </h1>
                     <p> Let's go back through our best moments together! </p>
@@ -149,6 +187,7 @@
                     `,
                     height: "450px"
                 }
+*/
             ];
 
             function nextPage() {
@@ -161,26 +200,43 @@
                 if (currentPage < pages.length) {
                     card.innerHTML = pages[currentPage].html;
                     
-                if (currentPage === 0) {
-                    smolbox.style.height = pages[0].height;
-                }
+                    
+                    if (currentPage === 0) {
+                        smolbox.style.height = pages[0].height;
+                    }
+                    
+                    if (currentPage === 1) {
+                        smolbox.style.height = pages[1].height;
+                    }
+                    
+                    if (currentPage === 3) {
+                        smolbox.style.height = pages[3].height;
+                    }
 
-                if (currentPage === 1) {
-                    smolbox.style.height = pages[1].height;
-                }
-                
-                if (currentPage === 3) {
-                    smolbox.style.height = pages[3].height;
-                }
-                
-                if (currentPage === 4) {
-                    smolbox.style.height = pages[4].height;
-                }
-                
-                if (currentPage === 5) {
-                    smolbox.style.height = pages[5].height;
-                }
-                
+                    if (currentPage === 4) {
+                        smolbox.style.height = pages[4].height;
+                    }
+
+                    if (currentPage === 5) {
+                        smolbox.style.height = pages[5].height;
+                    }
+
+                    if (currentPage === 5) {
+                        setTimeout(() => {
+                        nextPage(); // Automatically go to next page
+                        }, 2000);
+                    }
+
+                    // Fade in buttons on page 6
+                    if (currentPage === 6) {
+                        setTimeout(() => {
+                            const buttons = document.getElementById("valentine-buttons");
+                            if (buttons) {
+                                buttons.style.opacity = 1;
+                            }
+                        }, 2000); // Buttons fade in after 0.5 seconds
+                    }
+
                 // Re-attach event listener to new button
                     const newBtn = document.getElementById("btn1");
                     
@@ -197,6 +253,34 @@
                             newBtn.style.width = pages[1].width;
                         }
                     }
+
+                    // Handle Yes/No buttons on page 6 - PUT IT HERE ↓
+                        const yesBtn = document.getElementById("yesBtn");
+                        const noBtn = document.getElementById("noBtn");
+
+                        if (yesBtn) {
+                            yesBtn.addEventListener("click", () => {
+                                card.innerHTML = `<h1>YAY!!! 🎉💜✨</h1>`;
+                            });
+                        }
+
+                        let noSize = 100;
+                        if (noBtn) {
+                            noBtn.addEventListener("mouseover", () => {
+                                noSize -= 10;
+                                noBtn.style.transform = `scale(${noSize / 100})`;
+
+                                noBtn.style.position = "absolute";
+                                noBtn.style.left = Math.random() * 80 + "%";
+                                noBtn.style.top = Math.random() * 60 + "%";
+
+                                if (noSize <= 20) {
+                                    noBtn.style.display = "none";
+                                    alert("Oops! The 'No' button ran away and disappeared 😄💜");
+                                }
+                            });
+                        }
+
                 }
                 card.style.opacity = 1;
             }, 500);
