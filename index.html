@@ -20,6 +20,7 @@
             const smolbox = document.querySelector(".smolbox");
             const btn1 = document.getElementById("btn1");
             const card = document.getElementById("contents");
+            let heartInterval;
         
         // Preload images
         function preloadImages(imageUrls) {
@@ -260,14 +261,21 @@
 
                         if (yesBtn) {
                             yesBtn.addEventListener("click", () => {
-                                card.innerHTML = `<h1>YAY!!! 🎉💜✨</h1>`;
+                                card.innerHTML = `<h1>Yayy. I luv u bebe ko</h1>
+                                <img src='res/photos/catkiss.gif' width="100px" height="100px">
+                                <p> Look, flowers! </p>
+                                `;
+                                smolbox.style.height = "200px";
+
+                                clearInterval(heartInterval);
+                                heartInterval = setInterval(flowers, 200);
                             });
                         }
 
                         let noSize = 100;
                         if (noBtn) {
                             noBtn.addEventListener("mouseover", () => {
-                                noSize -= 20;
+                                noSize -= 15;
                                 noBtn.style.transform = `scale(${noSize / 100})`;
 
                                 noBtn.style.position = "absolute";
@@ -290,7 +298,7 @@
                                 noBtn.style.left = newLeft + "%";
                                 noBtn.style.top = newTop + "%";
 
-                                if (noSize <= 20) {
+                                if (noSize <= 15) {
                                     noBtn.style.display = "none";
                                     alert("Oops! The 'No' button ran away. I guess you have no choice now. :)");
                                 }
@@ -332,11 +340,24 @@ btn1.addEventListener("click", nextPage);
         });
     }
 
-    
+    function flowers() {
+    const container = document.querySelector('.container');
+    const creat = document.createElement('div');
+    creat.innerHTML = '🌸';
+    container.appendChild(creat);
+    creat.classList.add('hearts');
+    creat.style.left = Math.random() * 100 + 'vw';
+    creat.style.animationDuration = Math.random() * 3 + 2 + 's';
+    creat.addEventListener('animationend', () => {
+        creat.remove();
+        });
+    }
+
 
     hearts();
 
-    setInterval(hearts, 200);
+    heartInterval = setInterval(hearts, 200);
+
 
     
         </script>        
