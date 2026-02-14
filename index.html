@@ -267,20 +267,36 @@
                         let noSize = 100;
                         if (noBtn) {
                             noBtn.addEventListener("mouseover", () => {
-                                noSize -= 10;
+                                noSize -= 20;
                                 noBtn.style.transform = `scale(${noSize / 100})`;
-
+                                
                                 noBtn.style.position = "absolute";
-                                noBtn.style.left = Math.random() * 80 + "%";
-                                noBtn.style.top = Math.random() * 60 + "%";
-
+                                
+                                // Get a safe position that avoids the Yes button
+                                let newLeft, newTop;
+                                let isSafe = false;
+                                
+                                while (!isSafe) {
+                                    newLeft = Math.random() * 70 + 10; // 10% to 80%
+                                    newTop = Math.random() * 50 + 10;  // 10% to 60%
+                                    
+                                    // Check if it's far enough from center (where Yes button is)
+                                    const distanceFromCenter = Math.abs(newLeft - 50);
+                                    if (distanceFromCenter > 20 || newTop < 30) {
+                                        isSafe = true;
+                                    }
+                                }
+                                
+                                noBtn.style.left = newLeft + "%";
+                                noBtn.style.top = newTop + "%";
+                                
                                 if (noSize <= 20) {
                                     noBtn.style.display = "none";
                                     alert("Oops! The 'No' button ran away and disappeared 😄💜");
                                 }
                             });
                         }
-
+                        
                 }
                 card.style.opacity = 1;
             }, 500);
